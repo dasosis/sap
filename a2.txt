@@ -1,0 +1,45 @@
+select * from Z001018_EMPLOYE into abc.
+write:/ abc-ID, '|', abc-FIRSTNAME, '|', abc-LASTNAME, '|', abc-PHONE, '|'.
+ENDSELECT.
+
+abc-ID = 11256.
+abc-FIRSTNAME = 'rahul'.
+abc-LASTNAME = 'dutta'.
+abc-PHONE = 7568876856.
+
+insert Z001018_EMPLOYE from abc.
+
+if sy-subrc = 0.
+write:/ 'Data inserted successfully'.
+else.
+write: 'return code',sy-subrc.
+endif.
+select * from Z001018_EMPLOYE into abc.
+write:/ abc-ID, '|', abc-FIRSTNAME, '|', abc-LASTNAME, '|', abc-PHONE, '|'.
+ENDSELECT.
+
+
+select single * from Z001018_EMPLOYE into abc where id = 11256.
+abc-FIRSTNAME = 'sahil'.
+abc-LASTNAME = 'saha'.
+abc-PHONE = 8508876856.
+
+update Z001018_EMPLOYE from abc.
+if sy-subrc = 0.
+write:/ 'Data updated successfully'.
+else.
+write: 'record not found',sy-subrc.
+endif.
+select * from Z001018_EMPLOYE into abc.
+write:/ abc-ID, '|', abc-FIRSTNAME, '|', abc-LASTNAME, '|', abc-PHONE, '|'.
+ENDSELECT.
+
+delete from Z001018_EMPLOYE.
+if sy-subrc = 0.
+write:/ 'Data deleted successfully'.
+else.
+write: 'record not found',sy-subrc.
+endif.
+select * from Z001018_EMPLOYE into abc.
+write:/ abc-ID, '|', abc-FIRSTNAME, '|', abc-LASTNAME, '|', abc-PHONE, '|'.
+ENDSELECT.
