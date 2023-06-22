@@ -1,0 +1,40 @@
+class test definition.
+ public section.
+ methods: m1, m2.
+ protected section.
+ methods: t1pro.
+endclass.
+
+class test1 definition inheriting from test.
+ public section.
+ methods: t1, t2.
+endclass.
+
+class test implementation.
+ method m1.
+ write: /'this is m1 method from test'.
+endmethod.
+method m2.
+ write: /'this is m2 method from test'.
+ call method: t1pro.
+endmethod.
+ method t1pro.
+ write: /'this is t1pro method from test'.
+endmethod.
+endclass.
+
+class test1 implementation.
+ method t1.
+ write: /'this is t1 method from test1'.
+ call method: m1.
+ endmethod.
+ method t2.
+ write: /'this is t2 method from test1'.
+ call method: m2.
+endmethod.
+endclass.
+
+start-of-selection.
+data: obj type ref to test1.
+create object: obj.
+call method: obj->t1, obj->t2.
